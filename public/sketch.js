@@ -24,6 +24,9 @@ function setup() {
 	createCanvas(1080, 600);
 	FoodX = (width) / 2;
 	FoodY = (height) / 2;
+
+	setInterval(getScore, 500);
+
 	frameRate(18);
 	end = -1;
 	snake[lambi++] = new SnakeBody();
@@ -81,8 +84,6 @@ async function getScore() {
 }
 
 function draw() {
-	getScore();
-
 	if (end == 0) {
 		snake[0].move();
 		snake[0].dead();
