@@ -5,7 +5,6 @@ require('dotenv').config();
 const firebase = require('firebase');
 
 var ref;
-var times = 0;
 record1 = [];
 record2 = [];
 
@@ -34,7 +33,6 @@ app.use(express.static('public'));
 app.use(express.json({limit: '200b'}));
 
 app.post('/getTheScore', (request, response) => {
-    times = 0;
     record1.length = 0;
     record2.length = 0;
     // console.log("I Got A Request To Send Data!!");
@@ -51,9 +49,6 @@ app.post('/getTheScore', (request, response) => {
 });
 
 app.post('/api', (request, response) => {
-    if(times == 1) {
-        return;
-    }
     console.log("I Got A Request To Add Data!!");
     var data = {
         name: request.body.name,
@@ -71,7 +66,6 @@ app.post('/api', (request, response) => {
     ref.off();
     ref.push(data);
     console.log("Data Added To Firebase Successfully!!");
-    times = 1;
     response.end();
 });
 
