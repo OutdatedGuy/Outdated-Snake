@@ -8,6 +8,7 @@ var bigScore = 0;
 var ran;
 var inputName;
 var data;
+var times;
 var record1 = [];
 var record2 = [];
 var submit = 0;
@@ -278,7 +279,7 @@ function mousePressed() {
 		data = {
 			level: level,
 			name: inputName.value(),
-			score: lambi - 1
+			score: times
 		};
 		nameSubmitted();
 	}
@@ -361,6 +362,7 @@ function gameScreen() {
 		textSize(45);
 		text("Score: " + (lambi - 1), width / 2, height / 2);
 	}
+	times=lambi-1;
 	FoodShow(ran);
 	for (i = 0; i < lambi; i++) {
 		snake[i].show();
