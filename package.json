@@ -1,9 +1,11 @@
 {
-  "name": "node1",
+  "name": "outdated-snake",
   "version": "1.0.0",
-  "description": "Outdated Snake Game using Node",
-  "main": "index.js",
-  "scripts": { "start": "node index.js" },
+  "description": "Outdated Snake Game using Node.js",
+  "main": "server.js",
+  "scripts": { 
+    "start": "node server.js"
+   },
   "author": "Outdated Guy",
   "license": "ISC",
   "dependencies": {
