@@ -3,14 +3,23 @@
   "version": "1.0.0",
   "description": "Outdated Snake Game using Node.js",
   "main": "server.js",
-  "scripts": { 
+  "scripts": {
     "start": "node server.js"
-   },
+  },
   "author": "Outdated Guy",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "firebase": "^8.1.1"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OutdatedGuy/Outdated-Snake.git"
+  },
+  "bugs": {
+    "url": "https://github.com/OutdatedGuy/Outdated-Snake/issues"
+  },
+  "homepage": "https://github.com/OutdatedGuy/Outdated-Snake#readme"
 }
