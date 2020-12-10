@@ -15,10 +15,18 @@ var submit = 0;
 var ref;
 let eatSound;
 let deadSound;
+let appleImg;
+let pearImg;
+let orangeImg;
+let bananaImg;
 
 function preload() {
 	deadSound = loadSound("sounds/Oof.mp3");
 	eatSound = loadSound("sounds/munch-sound-effect.mp3");
+	appleImg = loadImage("img/Apple.png");
+	pearImg = loadImage("img/Pear.png");
+	orangeImg = loadImage("img/Orange.png");
+	bananaImg = loadImage("img/Banana.png");
 }
 
 function setup() {
@@ -169,53 +177,13 @@ function foodLocation() {
 
 function FoodShow(type) {
 	if (type == 1) {
-		stroke(0);
-		strokeWeight(1);
-		fill(185, 52, 52);
-		rectMode(CORNER);
-		rect(FoodX + 9, FoodY, 2, 6);
-		fill(255, 0, 0);
-		ellipseMode(CORNER);
-		ellipse(FoodX, FoodY + 3, 20, 16);
-		fill(0, 255, 0);
-		ellipse(FoodX + 11, FoodY + 1, 9, 2.5);
+		image(bananaImg, FoodX, FoodY, 20,20);
 	} else if (type == 2) {
-		stroke(0);
-		strokeWeight(1);
-		fill(185, 52, 52);
-		rectMode(CORNER);
-		rect(FoodX + 9, FoodY, 2, 6);
-		fill(255, 140, 0);
-		ellipseMode(CORNER);
-		ellipse(FoodX, FoodY + 3, 20, 17);
-		fill(0, 255, 0);
-		ellipse(FoodX + 11, FoodY + 1, 9, 2.5);
+		image(appleImg, FoodX, FoodY, 20,20);
 	} else if (type == 3) {
-		noFill();
-		stroke(0);
-		strokeWeight(1);
-		line(FoodX + 10, FoodY + 2, FoodX + 5, FoodY + 17);
-		line(FoodX + 10, FoodY + 2, FoodX + 15, FoodY + 17);
-		fill(255, 0, 0);
-		circle(FoodX + 5, FoodY + 17, 7);
-		circle(FoodX + 15, FoodY + 17, 7);
+		image(pearImg, FoodX, FoodY, 20,20);
 	} else if (type == 4) {
-		noFill();
-		stroke(255, 255, 0);
-		strokeWeight(5);
-		arc(FoodX + 18, FoodY + 1, 30, 30, HALF_PI + 0.30, PI - 0.30);
-		arc(FoodX + 20, FoodY, 30, 18, HALF_PI + 0.30, PI - 0.30);
-		strokeWeight(1);
-		stroke(50);
-		arc(FoodX + 18, FoodY + 1, 30, 30, HALF_PI + 0.30, PI - 0.30);
-		arc(FoodX + 20, FoodY, 30, 18, HALF_PI + 0.30, PI - 0.30);
-		noStroke();
-		fill(0, 255, 0);
-		quad(FoodX, FoodY + 2, FoodX + 1, FoodY + 5, FoodX + 7, FoodY + 2, FoodX + 6, FoodY);
-		stroke(0);
-		strokeWeight(2);
-		point(FoodX + 16, FoodY + 16);
-		point(FoodX + 19, FoodY + 9);
+		image(orangeImg, FoodX, FoodY, 20,20);
 	}
 }
 
