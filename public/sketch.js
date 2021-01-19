@@ -460,7 +460,7 @@ function resetButton() {
 		text("Highscore List", width / 2, height / 2 + 107);
 	}
 	fill(0);
-	text("RESET", width / 2 + 60, height / 2 + 67);
+	text("Restart", width / 2 + 60, height / 2 + 67);
 	if (end == 4 || end == 3) {
 		text("Back", width / 2 - 60, height / 2 + 67);
 	} else {
