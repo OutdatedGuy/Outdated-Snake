@@ -7,7 +7,7 @@ Run npm install
 Run npm start
 
 # Development
-Made using p5js library and Node.js
+Made using p5.js library and Node.js
 
 A server side snake game which can add your score to database and retrive to show highscore list
 
