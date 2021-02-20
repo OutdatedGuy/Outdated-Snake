@@ -3,7 +3,9 @@ An Outdated Online Snake Game
 
 # Start
 Create .env file with reference to .env.example
+
 Run npm install
+
 Run npm start
 
 # Development
