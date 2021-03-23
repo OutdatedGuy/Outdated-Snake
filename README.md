@@ -1,7 +1,8 @@
 # Outdated-Snake
 
 An Outdated Online Snake Game  
-Desktop version setup [here](https://drive.google.com/drive/folders/1xxS7V_L8lY25YfEhznawBX0LxLYk7OFj?usp=sharing)  
+Game link [here](https://outdated-snake.herokuapp.com)  
+Desktop version setup [here](https://drive.google.com/drive/folders/1xxS7V_L8lY25YfEhznawBX0LxLYk7OFj?usp=sharing)
 
 # Start
 
