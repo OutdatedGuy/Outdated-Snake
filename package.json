@@ -1,6 +1,6 @@
 {
   "name": "outdated-snake",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Outdated Snake Game using Node.js",
   "main": "server.js",
   "scripts": {
