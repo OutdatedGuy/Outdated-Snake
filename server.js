@@ -27,7 +27,7 @@ ref = database.ref('Outdated Game/Snake Game/Level 2');
 ref.on('value',gotData2);
 
 const port = process.env.PORT || 1412;
-app.listen(port, () => console.log(`Starting server at ${port}`));
+app.listen(port, () => console.log(`Starting server at http://127.0.0.1:${port}`));
 
 app.use(express.static('public'));
 app.use(express.json({limit: '200b'}));
