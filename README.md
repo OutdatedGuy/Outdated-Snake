@@ -2,7 +2,7 @@
 
 An Outdated Online Snake Game  
 Game link [here](https://outdated-snake.herokuapp.com)  
-Latest Desktop Version Setup [here](https://github.com/OutdatedGuy/Outdated-Snake-Desktop/releases/latest/download/Outdated-Snake.Setup.exe)
+Latest Desktop Version Setup [here](https://github.com/OutdatedGuy/Outdated-Snake-Desktop/releases/latest/download/Outdated-Snake.Setup.zip)
 
 # Start
 
