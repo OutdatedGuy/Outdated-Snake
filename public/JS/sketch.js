@@ -182,7 +182,7 @@ function mousePressed() {
 		removeElements();
 		data = {
 			level: level,
-			name: inputName.value(),
+			name: inputName.value,
 			score: lambi,
 			check: times,
 		};
@@ -400,6 +400,7 @@ function submitScreen() {
 	end = 2;
 	background(60);
 	resetButton();
+	text;
 	inputName = createInput().attribute("maxlength", 15);
 	inputName.position(width / 2 - 130, height / 2 - 30);
 	inputName.size(250, 20);
@@ -438,7 +439,7 @@ function saveResult() {
 	fill(255);
 	text("Score: " + (lambi - 1), width / 2, height / 2 + blocks + 10);
 	fill(255, 0, 0);
-	text(inputName.value(), width / 2, height / 2 - 5);
+	text(inputName.value, width / 2, height / 2 - 5);
 	fill(0, 255, 0);
 	textSize(30);
 	text("Level: " + (level + 1), width / 2, height / 2 - 40);
@@ -562,24 +563,24 @@ function highscoreScreen() {
 function validName() {
 	if (inputName.value() == "") {
 		alert("ENTER A NAME");
-		inputName.focus();
 		return false;
 	}
-	if (!/^[a-zA-Z0-9']*$/g.test(inputName.value())) {
+	if (!/^[a-zA-Z0-9._@+& -]*$/g.test(inputName.value())) {
 		alert("Invalid Characters");
-		inputName.focus();
 		return false;
 	}
-	if (!/^[a-zA-Z]+$/g.test(inputName.value())) {
-		alert("Must Contain Alphabets");
-		inputName.focus();
-		return false;
-	}
-	if(inputName.value().length < 5) {
-		alert("Name must be atleat 5 characters long");
-		inputName.focus();
+	if (!/^[a-zA-Z][a-zA-Z0-9._@+& -]*$/g.test(inputName.value())) {
+		alert("Invalid Name");
 		return false;
 	}
 
+	var naam = inputName.value();
+	for (var x = 1; x < naam.length - 1; x++)
+		if (!/^[a-zA-Z0-9]*$/g.test(naam[x]) && naam[x] == naam[x + 1]) {
+			naam = naam.substr(0, x) + naam.substr(x + 1);
+			x--;
+		}
+
+	inputName.value = naam;
 	return true;
 }

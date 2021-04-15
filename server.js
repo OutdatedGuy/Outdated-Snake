@@ -1,6 +1,6 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
-require("dotenv").config();
 const firebase = require("firebase");
 
 var ref;
@@ -52,10 +52,10 @@ app.post("/api", (request, response) => {
 	console.log("I Got A Request To Add Data!!");
 	var data = {
 		name: request.body.name,
-		score: request.body.score,
+		score: request.body.score - 1,
 	};
 
-	if (data.score >= 1456 || data.score - 1 != request.body.check)
+	if (data.score >= 1456 || data.score != request.body.check)
 		request.body.level = 2;
 
 	if (request.body.level == 0) {
