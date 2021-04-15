@@ -12,6 +12,6 @@ Run `npm start`
 
 # Development
 
-Made using p5.js library and Node.js  
+Made using [p5.js](https://p5js.org/) library and [Node.js](https://nodejs.org/)  
 A server side snake game which can add your score to database and retrive to show highscore list  
-Inspired by The Coding Train
+Inspired by [The Coding Train](https://www.youtube.com/watch?v=AaGK-fj-BAM)

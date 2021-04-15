@@ -1,26 +1,3 @@
-var FoodX, FoodY;
-var blocks = 20;
-var end;
-let snake = [];
-var lambi = 0;
-var level;
-var bigScore = 0;
-var ran;
-var inputName;
-var data;
-var times;
-var record1 = [];
-var record2 = [];
-var submit = 0;
-let eatSound;
-let deadSound;
-let appleImg;
-let pearImg;
-let orangeImg;
-let bananaImg;
-let change = true;
-let noInternet = false;
-
 function preload() {
 	deadSound = loadSound("../sounds/Oof.mp3");
 	eatSound = loadSound("../sounds/munch-sound-effect.mp3");
@@ -77,15 +54,11 @@ function bubbleSort2() {
 }
 
 async function getScore() {
-	var data1 = {
-		level: -1,
-	};
 	const none = {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
 		},
-		body: JSON.stringify(data1),
 	};
 	var response = await fetch("/getTheScore", none);
 	var SCORE = await response.json();
@@ -98,77 +71,7 @@ function draw() {
 		snake[0].move();
 		snake[0].dead();
 	}
-	if (end == 0) {
-		gameScreen();
-	}
-}
-
-class SnakeBody {
-	constructor() {
-		this.x = FoodX;
-		this.y = FoodY;
-		this.xSpeed = 0;
-		this.ySpeed = 0;
-	}
-	updateSpeed(xS, xY) {
-		this.xSpeed = xS * blocks;
-		this.ySpeed = xY * blocks;
-	}
-	eyes() {
-		fill(0);
-		noStroke();
-		ellipseMode(CENTER);
-		if (this.xSpeed > 0) {
-			ellipse(this.x + 15, this.y + 5, 6, 3);
-			ellipse(this.x + 15, this.y + 15, 6, 3);
-		} else if (this.xSpeed < 0) {
-			ellipse(this.x + 5, this.y + 5, 6, 3);
-			ellipse(this.x + 5, this.y + 15, 6, 3);
-		} else if (this.ySpeed < 0) {
-			ellipse(this.x + 5, this.y + 5, 3, 6);
-			ellipse(this.x + 15, this.y + 5, 3, 6);
-		} else if (this.ySpeed > 0) {
-			ellipse(this.x + 5, this.y + 15, 3, 6);
-			ellipse(this.x + 15, this.y + 15, 3, 6);
-		}
-	}
-	dead() {
-		for (var i = 1; i < lambi; i++) {
-			if (this.x == snake[i].x && this.y == snake[i].y) {
-				deadSound.play();
-				end = 1;
-				endScreen();
-			}
-		}
-		if (
-			this.x == 0 ||
-			this.x == width - blocks ||
-			this.y == 0 ||
-			this.y == height - blocks
-		) {
-			deadSound.play();
-			end = 1;
-			endScreen();
-		}
-	}
-	eat() {
-		if (this.x == FoodX && this.y == FoodY) {
-			eatSound.play();
-			snake[lambi++] = new SnakeBody();
-			foodLocation();
-		}
-	}
-	move() {
-		this.x = this.x + this.xSpeed;
-		this.y = this.y + this.ySpeed;
-		change = true;
-	}
-	show() {
-		fill(0, 255, 0);
-		stroke(0);
-		strokeWeight(1);
-		rect(this.x, this.y, blocks);
-	}
+	if (end == 0) gameScreen();
 }
 
 function foodLocation() {
@@ -183,15 +86,10 @@ function foodLocation() {
 }
 
 function FoodShow(type) {
-	if (type == 1) {
-		image(bananaImg, FoodX, FoodY, 20, 20);
-	} else if (type == 2) {
-		image(appleImg, FoodX, FoodY, 20, 20);
-	} else if (type == 3) {
-		image(pearImg, FoodX, FoodY, 20, 20);
-	} else if (type == 4) {
-		image(orangeImg, FoodX, FoodY, 20, 20);
-	}
+	if (type == 1) image(bananaImg, FoodX, FoodY, 20, 20);
+	else if (type == 2) image(appleImg, FoodX, FoodY, 20, 20);
+	else if (type == 3) image(pearImg, FoodX, FoodY, 20, 20);
+	else if (type == 4) image(orangeImg, FoodX, FoodY, 20, 20);
 }
 
 function keyPressed() {
@@ -223,22 +121,10 @@ function keyPressed() {
 		) {
 			snake[0].updateSpeed(0, 1);
 		}
-
-		if (
-			keyCode === LEFT_ARROW ||
-			keyCode === RIGHT_ARROW ||
-			keyCode === UP_ARROW ||
-			keyCode === DOWN_ARROW
-		)
-			change = false;
 	}
 	if (keyCode === 66) {
 		if (end == 0) {
-			if (bigScore == 0) {
-				bigScore = 1;
-			} else {
-				bigScore = 0;
-			}
+			bigScore = !bigScore;
 		} else if (end == 4 || end == 3) {
 			end = 1;
 			endScreen();
@@ -259,11 +145,12 @@ function mousePressed() {
 	var ver = height / 2;
 	if (
 		(end > 0 &&
-		mouseX > 2 * hor + 10 &&
-		mouseX < 2 * hor + 110 &&
-		mouseY > ver + 45 &&
-		mouseY < ver + 75 &&
-		!noInternet) || (end > 0 &&
+			mouseX > 2 * hor + 10 &&
+			mouseX < 2 * hor + 110 &&
+			mouseY > ver + 45 &&
+			mouseY < ver + 75 &&
+			!noInternet) ||
+		(end > 0 &&
 			mouseX > 2 * hor - 50 &&
 			mouseX < 2 * hor + 50 &&
 			mouseY > ver + 45 &&
@@ -289,13 +176,15 @@ function mousePressed() {
 		mouseX > 2 * hor - 110 &&
 		mouseX < 2 * hor - 10 &&
 		mouseY > ver + 45 &&
-		mouseY < ver + 75
+		mouseY < ver + 75 &&
+		validName()
 	) {
 		removeElements();
 		data = {
 			level: level,
 			name: inputName.value(),
-			score: times,
+			score: lambi,
+			check: times,
 		};
 		nameSubmitted();
 	}
@@ -334,11 +223,7 @@ function mousePressed() {
 		}
 	}
 	if (end == 0 && mouseX > 70 && mouseY > 2 && mouseX < 130 && mouseY < 17) {
-		if (bigScore == 0) {
-			bigScore = 1;
-		} else {
-			bigScore = 0;
-		}
+		bigScore = !bigScore;
 	}
 	if (
 		(end == 1 || end == 3) &&
@@ -393,14 +278,14 @@ function gameScreen() {
 	textSize(12);
 	text("Big Score", 100, 14);
 	snake[0].eat();
-	if (bigScore == 0) {
+	if (!bigScore) {
 		fill(255);
 		noStroke();
 		strokeWeight(1);
 		textAlign(CENTER);
 		textSize(13);
 		text("Score: " + (lambi - 1), 30, 15);
-	} else if (bigScore == 1) {
+	} else {
 		fill(170);
 		stroke(170);
 		strokeWeight(2);
@@ -412,9 +297,7 @@ function gameScreen() {
 	FoodShow(ran);
 	for (i = 0; i < lambi; i++) {
 		snake[i].show();
-		if (i == 0) {
-			snake[0].eyes();
-		}
+		if (i == 0) snake[0].eyes();
 	}
 	for (i = lambi - 1; i > 0; i--) {
 		snake[i].x = snake[i - 1].x;
@@ -674,4 +557,29 @@ function highscoreScreen() {
 	if (submit != 1) {
 		submit = 2;
 	}
+}
+
+function validName() {
+	if (inputName.value() == "") {
+		alert("ENTER A NAME");
+		inputName.focus();
+		return false;
+	}
+	if (!/^[a-zA-Z0-9']*$/g.test(inputName.value())) {
+		alert("Invalid Characters");
+		inputName.focus();
+		return false;
+	}
+	if (!/^[a-zA-Z]+$/g.test(inputName.value())) {
+		alert("Must Contain Alphabets");
+		inputName.focus();
+		return false;
+	}
+	if(inputName.value().length < 5) {
+		alert("Name must be atleat 5 characters long");
+		inputName.focus();
+		return false;
+	}
+
+	return true;
 }
