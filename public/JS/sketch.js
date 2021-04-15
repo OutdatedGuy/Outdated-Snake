@@ -400,7 +400,6 @@ function submitScreen() {
 	end = 2;
 	background(60);
 	resetButton();
-	text;
 	inputName = createInput().attribute("maxlength", 15);
 	inputName.position(width / 2 - 130, height / 2 - 30);
 	inputName.size(250, 20);
