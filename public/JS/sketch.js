@@ -430,6 +430,7 @@ function nameSubmitted() {
 }
 
 function saveResult() {
+	getScore();
 	background(60);
 	resetButton();
 	textSize(30);
