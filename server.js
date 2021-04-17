@@ -9,10 +9,10 @@ record2 = [];
 
 var firebaseConfig = {
 	apiKey: process.env.API_KEY,
-	authDomain: "outdated-projects.firebaseapp.com",
-	databaseURL: "https://outdated-projects.firebaseio.com",
-	projectId: "outdated-projects",
-	storageBucket: "outdated-projects.appspot.com",
+	authDomain: process.env.AUTH_DOMAIN,
+	databaseURL: process.env.DATABASE_URL,
+	projectId: process.env.PROJECT_ID,
+	storageBucket: process.env.STORAGE_BUCKET,
 	messagingSenderId: process.env.MESSAGING_SENDER_ID,
 	appId: process.env.APP_ID,
 	measurementId: process.env.MEASUREMENT_ID,
@@ -51,11 +51,14 @@ app.post("/getTheScore", (_request, response) => {
 app.post("/api", (request, response) => {
 	console.log("I Got A Request To Add Data!!");
 	var data = {
-		name: request.body.name,
+		name: request.body.name.substr(0, 15),
 		score: request.body.score - 1,
 	};
 
-	if (data.score >= 1456 || data.score != request.body.check)
+	if (
+		(data.score >= 1456 || data.score != request.body.check) &&
+		request.body.check != undefined
+	)
 		request.body.level = 2;
 
 	if (request.body.level == 0) {
@@ -64,6 +67,7 @@ app.post("/api", (request, response) => {
 		ref = database.ref("Outdated Game/Snake Game/Level 2");
 	} else {
 		console.log("Data Adding Failed :(");
+		response.end();
 		return;
 	}
 	ref.off();
