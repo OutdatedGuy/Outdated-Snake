@@ -61,6 +61,8 @@ app.post("/api", (request, response) => {
 	)
 		request.body.level = 2;
 
+	if (request.body.check == undefined) data.score++;
+
 	if (request.body.level == 0) {
 		ref = database.ref("Outdated Game/Snake Game/Level 1");
 	} else if (request.body.level == 1) {
