@@ -86,6 +86,7 @@ function gotData1(data) {
 		record1[i] = {
 			name: scores[k].name,
 			score: scores[k].score,
+			index: i,
 		};
 	}
 }
@@ -98,6 +99,7 @@ function gotData2(data) {
 		record2[i] = {
 			name: scores[k].name,
 			score: scores[k].score,
+			index: i,
 		};
 	}
 }
