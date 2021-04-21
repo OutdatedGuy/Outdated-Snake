@@ -29,28 +29,9 @@ function setup() {
 	startScreen();
 }
 
-function bubbleSort1() {
-	for (i = 0; i < 30; i++) {
-		for (j = record1.length - 1; j > 0; j--) {
-			if (record1[j].score > record1[j - 1].score) {
-				var tempS = record1[j];
-				record1[j] = record1[j - 1];
-				record1[j - 1] = tempS;
-			}
-		}
-	}
-}
-
-function bubbleSort2() {
-	for (i = 0; i < 30; i++) {
-		for (j = record2.length - 1; j > 0; j--) {
-			if (record2[j].score > record2[j - 1].score) {
-				var tempS = record2[j];
-				record2[j] = record2[j - 1];
-				record2[j - 1] = tempS;
-			}
-		}
-	}
+function myCompare(a, b) {
+	if (a.score == b.score) return a.index - b.index;
+	return b.score - a.score;
 }
 
 async function getScore() {
@@ -309,8 +290,8 @@ function gameScreen() {
 
 function endScreen() {
 	noInternet = false;
-	bubbleSort1();
-	bubbleSort2();
+	record1.sort(myCompare);
+	record2.sort(myCompare);
 
 	background(60);
 	if (record1.length == 0 || record2.length == 0) {
@@ -483,8 +464,8 @@ function newHigh() {
 }
 
 function highscoreScreen() {
-	bubbleSort1();
-	bubbleSort2();
+	record1.sort(myCompare);
+	record2.sort(myCompare);
 
 	background(60);
 	end = 4;
