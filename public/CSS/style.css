@@ -12,7 +12,7 @@ canvas {
 	display: block;
 }
 
-.download-message {
+.download {
 	color: purple;
 	font-size: x-large;
 	position: absolute;
