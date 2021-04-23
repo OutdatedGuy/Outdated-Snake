@@ -5,7 +5,7 @@ const firebase = require("firebase");
 const limitter = require("express-rate-limit");
 
 const apiLimitter = limitter({
-	windowMs: 2 * 60 * 100,
+	windowMs: 2 * 60 * 1000,
 	max: 2,
 });
 
