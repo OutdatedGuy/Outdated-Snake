@@ -2,6 +2,12 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const firebase = require("firebase");
+const limitter = require("express-rate-limit");
+
+const apiLimitter = limitter({
+	windowMs: 2 * 60 * 100,
+	max: 2,
+});
 
 var ref;
 record1 = [];
@@ -48,7 +54,7 @@ app.post("/getTheScore", (_request, response) => {
 	});
 });
 
-app.post("/api", (request, response) => {
+app.post("/api", apiLimitter, (request, response) => {
 	console.log("I Got A Request To Add Data!!");
 	var data = {
 		name: request.body.name.substr(0, 15),
