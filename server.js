@@ -55,7 +55,7 @@ app.post("/getTheScore", (_request, response) => {
 });
 
 app.post("/api", apiLimitter, (request, response) => {
-  if (request.headers.host !== "https://outdated-snake.herokuapp.com") {
+  if (request.headers.host !== "outdated-snake.herokuapp.com") {
     response.end();
     return;
   }
