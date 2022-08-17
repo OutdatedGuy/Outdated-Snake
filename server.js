@@ -55,14 +55,6 @@ app.post("/getTheScore", (_request, response) => {
 });
 
 app.post("/api", apiLimitter, (request, response) => {
-  if (
-    request.headers.referer !== "https://outdated-snake.herokuapp.com/" ||
-    request.headers.origin !== "https://outdated-snake.herokuapp.com"
-  ) {
-    response.end();
-    return;
-  }
-
   console.log("I Got A Request To Add Data!!");
   var data = {
     name: request.body.name.substr(0, 15),
