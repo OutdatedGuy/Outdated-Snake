@@ -1,7 +1,7 @@
 # Outdated-Snake
 
 An Outdated Online Snake Game  
-Game link [here](https://outdated-snake.herokuapp.com)  
+Game link [here](https://outdated-snake.outdatedguy.rocks)  
 Latest Desktop Version Setup [here](https://github.com/OutdatedGuy/Outdated-Snake-Desktop/releases/latest/download/Outdated-Snake.Setup.zip)
 
 # Start
