@@ -1,19 +1,19 @@
 {
   "name": "outdated-snake",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "Outdated Snake Game using Node.js",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
   "author": "Outdated Guy",
-  "license": "ISC",
+  "license": "BSD 3-Clause License",
   "dependencies": {
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-rate-limit": "^5.2.6",
-    "firebase": "^8.4.1",
-    "nodemon": "^2.0.7"
+    "firebase": "^8.4.1"
   },
   "repository": {
     "type": "git",
@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/OutdatedGuy/Outdated-Snake/issues"
   },
-  "homepage": "https://github.com/OutdatedGuy/Outdated-Snake#readme"
+  "homepage": "https://github.com/OutdatedGuy/Outdated-Snake#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
 }
