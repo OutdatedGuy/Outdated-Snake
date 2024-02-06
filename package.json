@@ -10,10 +10,10 @@
   "author": "Outdated Guy",
   "license": "BSD 3-Clause License",
   "dependencies": {
-    "dotenv": "^8.2.0",
+    "dotenv": "^16.4.1",
     "express": "^4.17.1",
-    "express-rate-limit": "^5.2.6",
-    "firebase": "^8.4.1"
+    "express-rate-limit": "^7.1.5",
+    "firebase": "^8.10.1"
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,6 @@
   },
   "homepage": "https://github.com/OutdatedGuy/Outdated-Snake#readme",
   "devDependencies": {
-    "nodemon": "^2.0.20"
+    "nodemon": "^3.0.3"
   }
 }
