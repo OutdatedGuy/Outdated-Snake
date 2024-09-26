@@ -1,17 +1,14 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
-const firebase = require("firebase");
+const { initializeServerApp } = require("firebase/app");
+const { getDatabase, ref, push, get } = require("firebase/database");
 const limitter = require("express-rate-limit");
 
 const apiLimitter = limitter({
   windowMs: 2 * 60 * 1000,
   max: 2,
 });
-
-var ref;
-record1 = [];
-record2 = [];
 
 var firebaseConfig = {
   apiKey: process.env.API_KEY,
@@ -23,12 +20,9 @@ var firebaseConfig = {
   appId: process.env.APP_ID,
   measurementId: process.env.MEASUREMENT_ID,
 };
-firebase.initializeApp(firebaseConfig);
-var database = firebase.database();
-ref = database.ref("Outdated Game/Snake Game/Level 1");
-ref.on("value", gotData1);
-ref = database.ref("Outdated Game/Snake Game/Level 2");
-ref.on("value", gotData2);
+const firebaseApp = initializeServerApp(firebaseConfig, {});
+
+const firebaseDB = getDatabase(firebaseApp);
 
 const port = process.env.PORT || 1412;
 app.listen(port, () =>
@@ -38,23 +32,21 @@ app.listen(port, () =>
 app.use(express.static("public"));
 app.use(express.json({ limit: "200b" }));
 
-app.post("/getTheScore", (_request, response) => {
-  record1.length = 0;
-  record2.length = 0;
-  // console.log("I Got A Request To Send Data!!");
-  ref = database.ref("Outdated Game/Snake Game/Level 1");
-  ref.on("value", gotData1);
+app.get("/getTheScore", async (_request, response) => {
+  console.log("I Got A Request To Send Data!!");
 
-  ref = database.ref("Outdated Game/Snake Game/Level 2");
-  ref.on("value", gotData2);
+  const [lvl1Data, lvl2Data] = await Promise.all([
+    get(ref(firebaseDB, "Outdated Game/Snake Game/Level 1")),
+    get(ref(firebaseDB, "Outdated Game/Snake Game/Level 2")),
+  ]);
 
   response.json({
-    lvl1: record1,
-    lvl2: record2,
+    lvl1: filterData(lvl1Data),
+    lvl2: filterData(lvl2Data),
   });
 });
 
-app.post("/api", apiLimitter, (request, response) => {
+app.post("/api", apiLimitter, async (request, response) => {
   console.log("I Got A Request To Add Data!!");
   var data = {
     name: request.body.name.substr(0, 15),
@@ -70,42 +62,35 @@ app.post("/api", apiLimitter, (request, response) => {
   if (request.body.check == undefined) data.score++;
 
   if (request.body.level == 0) {
-    ref = database.ref("Outdated Game/Snake Game/Level 1");
+    await push(ref(firebaseDB, "Outdated Game/Snake Game/Level 1"), data);
   } else if (request.body.level == 1) {
-    ref = database.ref("Outdated Game/Snake Game/Level 2");
+    await push(ref(firebaseDB, "Outdated Game/Snake Game/Level 2"), data);
   } else {
     console.log("Data Adding Failed :(");
     response.end();
     return;
   }
-  ref.off();
-  ref.push(data);
   console.log("Data Added To Firebase Successfully!!");
   response.end();
 });
 
-function gotData1(data) {
+/**
+ * Fiters the data from the database
+ *
+ * @param {DataSnapshot} data 
+ * @return {Array} The filtered data
+ */
+function filterData(data) {
   var scores = data.val();
   var keys = Object.keys(scores);
+  const record = [];
   for (i = 0; i < keys.length; i++) {
     var k = keys[i];
-    record1[i] = {
+    record[i] = {
       name: scores[k].name,
       score: scores[k].score,
       index: i,
     };
   }
-}
-
-function gotData2(data) {
-  var scores = data.val();
-  var keys = Object.keys(scores);
-  for (i = 0; i < keys.length; i++) {
-    var k = keys[i];
-    record2[i] = {
-      name: scores[k].name,
-      score: scores[k].score,
-      index: i,
-    };
-  }
+  return record;
 }

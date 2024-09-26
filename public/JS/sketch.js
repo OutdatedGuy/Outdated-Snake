@@ -36,7 +36,7 @@ function myCompare(a, b) {
 
 async function getScore() {
 	const none = {
-		method: "POST",
+		method: "GET",
 		headers: {
 			"Content-Type": "application/json",
 		},
