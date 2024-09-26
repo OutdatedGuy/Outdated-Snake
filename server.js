@@ -41,8 +41,8 @@ app.get("/getTheScore", async (_request, response) => {
   ]);
 
   response.json({
-    lvl1: filterData(lvl1Data),
-    lvl2: filterData(lvl2Data),
+    lvl1: Object.values(lvl1Data.val()),
+    lvl2: Object.values(lvl2Data.val()),
   });
 });
 
@@ -56,8 +56,9 @@ app.post("/api", apiLimitter, async (request, response) => {
   if (
     (data.score >= 1456 || data.score != request.body.check) &&
     request.body.check != undefined
-  )
+  ) {
     request.body.level = 2;
+  }
 
   if (request.body.check == undefined) data.score++;
 
@@ -73,24 +74,3 @@ app.post("/api", apiLimitter, async (request, response) => {
   console.log("Data Added To Firebase Successfully!!");
   response.end();
 });
-
-/**
- * Fiters the data from the database
- *
- * @param {DataSnapshot} data 
- * @return {Array} The filtered data
- */
-function filterData(data) {
-  var scores = data.val();
-  var keys = Object.keys(scores);
-  const record = [];
-  for (i = 0; i < keys.length; i++) {
-    var k = keys[i];
-    record[i] = {
-      name: scores[k].name,
-      score: scores[k].score,
-      index: i,
-    };
-  }
-  return record;
-}
