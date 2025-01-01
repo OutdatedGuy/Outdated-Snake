@@ -11,7 +11,7 @@
   "license": "BSD 3-Clause License",
   "dependencies": {
     "dotenv": "^16.4.1",
-    "express": "^4.21.1",
+    "express": "^4.21.2",
     "express-rate-limit": "^7.1.5",
     "firebase": "^10.12.2"
   },
