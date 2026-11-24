@@ -1,3 +1,4 @@
 .env
 node_modules/
 testsv.js
+.DS_Store

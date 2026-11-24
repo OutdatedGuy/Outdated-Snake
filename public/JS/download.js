@@ -28,11 +28,11 @@ if (navigator.userAgentData?.getHighEntropyValues) {
   } catch (_) { }
 }
 
+const arch = isArm ? "arm64" : "x64";
 if (isMac) {
-  const arch = isArm ? "arm64" : "x64";
   linkEl.href = `${BASE_URL}/outdated-snake-macos-${arch}.pkg`;
   labelEl.textContent = `(macOS ${isArm ? "Apple Silicon" : "Intel"})`;
 } else if (isWin) {
-  linkEl.href = `${BASE_URL}/outdated-snake-windows-x64.exe`;
-  labelEl.textContent = "(Windows)";
+  linkEl.href = `${BASE_URL}/outdated-snake-windows-${arch}.exe`;
+  labelEl.textContent = `(Windows ${arch === "arm64" ? "ARM" : "x64"})`;
 }
