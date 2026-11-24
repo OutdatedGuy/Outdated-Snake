@@ -20,3 +20,5 @@ let orangeImg;
 let bananaImg;
 let change = true;
 let noInternet = false;
+let assetsLoaded = false;
+let scoreInterval = null;

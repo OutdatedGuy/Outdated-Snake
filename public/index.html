@@ -1,46 +1,46 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Outdated Snake</title>
 
-<head>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JMQK93NK41"></script>
+    <!-- Google Analytics (Firebase Web App Stream) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-DXJBPH3S4Y"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-DXJBPH3S4Y");
+    </script>
 
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
+    <link rel="shortcut icon" href="Icon/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="CSS/style.css" />
 
-    gtag('config', 'G-JMQK93NK41');
-  </script>
+    <script type="module" src="JS/download.js"></script>
+    <script defer src="JS/vendor/p5.min.js"></script>
+    <script defer src="JS/vendor/p5.sound.min.js"></script>
+    <script defer src="JS/global-variables.js"></script>
+    <script type="module" src="JS/firebase-sync.js"></script>
+    <script defer src="JS/snake.js"></script>
+    <script defer src="JS/sketch.js"></script>
+  </head>
 
-  <script data-ad-client="ca-pub-5896921095667472" async
-    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/p5.js"
-    integrity="sha512-a5hlZKgpC1LVAuKgVeXdP0D9Yfacj0hLtNdzx9zFMkIWRrQyO37KtIPiqArGmVuaBYu3ON6Vt0N3+G/JaLXQYQ=="
-    crossorigin="anonymous"></script>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/addons/p5.sound.js"
-    integrity="sha512-KxzVm+IqxNNq0+SzT/zzd5PHxY4LPrN+v5gZJ6+JKqjeU3Cr4y/djAg5eNlKDWurn1SeKZpql/yeOMWblMSzOg=="
-    crossorigin="anonymous"></script>
-
-  <link rel="shortcut icon" href="Icon/favicon.ico" type="image/x-icon">
-
-  <link rel="stylesheet" type="text/css" href="CSS/style.css">
-  
-  <meta charset="utf-8">
-
-</head>
-
-<body>
-  <p class="download">Click <a class="myButton"
-      href="https://github.com/OutdatedGuy/Outdated-Snake-Desktop/releases/latest/download/Outdated-Snake.Setup.zip">Here</a>
-    to
-    Download the Latest Desktop App</p>
-
-  <script src="JS/global-variables.js"></script>
-  <script src="JS/snake.js"></script>
-  <script src="JS/sketch.js"></script>
-</body>
-
+  <body>
+    <p class="download">
+      Click
+      <a
+        id="download-link"
+        class="myButton"
+        href="https://github.com/OutdatedGuy/Outdated-Snake-Desktop/releases/latest"
+        target="_blank"
+        >Here</a
+      >
+      to Download the Latest Desktop App <span id="download-platform"></span>
+    </p>
+  </body>
 </html>

@@ -1,6 +1,6 @@
 {
   "name": "outdated-snake",
-  "version": "3.1.0",
+  "version": "4.0.0",
   "description": "Outdated Snake Game using Node.js",
   "main": "server.js",
   "scripts": {
@@ -10,10 +10,9 @@
   "author": "Outdated Guy",
   "license": "BSD 3-Clause License",
   "dependencies": {
-    "dotenv": "^17.2.3",
     "express": "^5.1.0",
     "express-rate-limit": "^8.1.0",
-    "firebase": "^12.3.0"
+    "firebase": "^13.4.0"
   },
   "repository": {
     "type": "git",
