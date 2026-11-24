@@ -38,11 +38,12 @@ async function setup() {
 
   submit = 0;
   startScreen();
+  document.querySelector(".download")?.classList.add("visible");
 }
 
 function myCompare(a, b) {
-	if (a.score == b.score) return a.index - b.index;
-	return b.score - a.score;
+  if (a.score == b.score) return a.index - b.index;
+  return b.score - a.score;
 }
 
 function draw() {

@@ -13,6 +13,7 @@ canvas {
 }
 
 .download {
+  display: none;
   color: black;
   font-size: x-large;
   position: absolute;
@@ -22,6 +23,10 @@ canvas {
   margin: 0 0 14px 0;
   text-align: center;
   white-space: nowrap;
+}
+
+.download.visible {
+  display: block;
 }
 
 .myButton {
