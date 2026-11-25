@@ -25,6 +25,17 @@ const apiLimiter = rateLimit({
   max: 2,
 });
 
+const pingLimiter = rateLimit({
+  windowMs: 60 * 1000,
+  max: 10,
+});
+
+app.get("/ping", pingLimiter, (req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Cache-Control", "no-store");
+  return res.status(200).json({ ok: true });
+});
+
 app.use(express.static("public", { maxAge: "30d" }));
 app.use(express.json({ limit: "1kb" }));
 
